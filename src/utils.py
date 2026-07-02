@@ -8,11 +8,6 @@ def filter_aeroplanes(aeroplanes_data, filter_words):
     """Функция фильтрует данные о самолётах по странам регистрации"""
 
     data = []
-    # if isinstance(item, InfoAeroplanesClass):
-    #     for word in filter_words:
-    #         for item in aeroplanes_data:
-    #             if item.country_rgstr == word:
-    #                 data.append(item)
 
     for word in filter_words:
         for item in aeroplanes_data:

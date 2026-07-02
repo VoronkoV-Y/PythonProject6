@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+from idlelib.debugobj_r import remote_object_tree_item
+
 from config import PATH_data
 import json
 from src.API_connect_class import APIConnectClass
@@ -35,7 +37,7 @@ class JSONSaverClass(ABC):
                 if isinstance(new_data, InfoAeroplanesClass):
                     data.append({"callsign": new_data.callsign, "country_rgstr": new_data.country_rgstr,
                                  "baro_altitude": new_data.baro_altitude, "velocity": new_data.velocity})
-                elif isinstance(new_data, Iterable):
+                elif isinstance(new_data, list):
                     for item in new_data:
                         data.append({"callsign": item.callsign, "country_rgstr": item.country_rgstr,
                                      "baro_altitude": item.baro_altitude, "velocity": item.velocity})
@@ -68,6 +70,9 @@ class JSONSaverClass(ABC):
 
     def delete_info(self, callsign):
         data = self.get_info()
+        if data == "Файл с данными не найден.":
+            print("Файл с данными не найден.")
+            return None
         new_data = []
         for item in data:
             if item["callsign"] != callsign:
@@ -78,21 +83,20 @@ class JSONSaverClass(ABC):
 
 # my_cheking
 if __name__ == "__main__":
-
-    my_api = APIConnectClass("Malta")
-    # print(my_api.get_coordinates())
-    # print(my_api.get_aeroplanes())
-    my_data_list = my_api.get_aeroplanes()
-    # print(my_data_list)
-    my_aeroplanes = InfoAeroplanesClass.cast_to_object_list(my_data_list)
-    # print(my_aeroplanes)
+#
+#     my_api = APIConnectClass("Malta")
+#     # print(my_api.get_coordinates())
+#     # print(my_api.get_aeroplanes())
+#     my_data_list = my_api.get_aeroplanes()
+#     # print(my_data_list)
+#     my_aeroplanes = InfoAeroplanesClass.cast_to_object_list(my_data_list)
+#     # print(my_aeroplanes)
     json_saver = JSONSaverClass()
+#     print(json_saver.path_to_file)
+    # new_aeroplane = InfoAeroplanesClass("TEST-!!!!", "France-TEST", 10000, 999)
+    # json_saver.add_info([])
     # json_saver.add_info(my_aeroplanes)
-
-    new_aeroplane = InfoAeroplanesClass("TEST-!!!!", "France-TEST", 10000, 999)
-    json_saver.add_info(new_aeroplane)
-    # json_saver.add_info(my_aeroplanes)
-    # print(json_saver.get_info())
+    print(json_saver.get_info())
     # json_saver.delete_info("TEST-!!!!!")
     # json_saver.delete_info("TEST-!!!!")
 
