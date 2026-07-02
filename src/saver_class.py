@@ -79,24 +79,3 @@ class JSONSaverClass(ABC):
                 new_data.append(item)
         with open(self.path_to_file, "w", encoding="UTF-8") as file:
             json.dump(new_data, file)
-
-
-# my_cheking
-if __name__ == "__main__":
-#
-#     my_api = APIConnectClass("Malta")
-#     # print(my_api.get_coordinates())
-#     # print(my_api.get_aeroplanes())
-#     my_data_list = my_api.get_aeroplanes()
-#     # print(my_data_list)
-#     my_aeroplanes = InfoAeroplanesClass.cast_to_object_list(my_data_list)
-#     # print(my_aeroplanes)
-    json_saver = JSONSaverClass()
-#     print(json_saver.path_to_file)
-    # new_aeroplane = InfoAeroplanesClass("TEST-!!!!", "France-TEST", 10000, 999)
-    # json_saver.add_info([])
-    # json_saver.add_info(my_aeroplanes)
-    print(json_saver.get_info())
-    # json_saver.delete_info("TEST-!!!!!")
-    # json_saver.delete_info("TEST-!!!!")
-
