@@ -5,7 +5,6 @@ from src.saver_class import JSONSaverClass
 from src.utils import filter_aeroplanes, get_aeroplanes_by_altitude, get_top_aeroplanes, sort_aeroplanes
 
 
-
 def user_interaction():
     """Функция для взаимодействия с пользователем"""
 
@@ -31,7 +30,7 @@ def user_interaction():
     country = input("Введите название страны: \n")
     top_n = int(input("Введите количество самолетов для вывода в топ N: \n"))
     filter_words = input("Введите названия стран для фильтрации по стране регистрации: \n").split()
-    altitude_range = input("Введите диапазон высот полета: \n") # Пример: 100000 - 150000
+    altitude_range = input("Введите диапазон высот полета: \n")  # Пример: 100000 - 150000
 
     # Использование выбранного ранее пользователем источника информации
     if data_flag == 1:
@@ -41,7 +40,7 @@ def user_interaction():
         user_aeroplanes_data = []
         for item in user_aeroplanes_data_object:
             user_aeroplanes_data.append({"callsign": item.callsign, "country_rgstr": item.country_rgstr,
-                         "baro_altitude": item.baro_altitude, "velocity": item.velocity})
+                                        "baro_altitude": item.baro_altitude, "velocity": item.velocity})
 
     if data_flag == 2:
         json_saver = JSONSaverClass()

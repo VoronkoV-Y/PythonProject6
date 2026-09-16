@@ -47,11 +47,11 @@ class InfoAeroplanesClass():
 
 
 # my_cheking
-if __name__ == "__main__":
-
-    my_api = APIConnectClass("Malta")
-    # print(my_api.get_coordinates())
-    # print(my_api.get_aeroplanes())
-    my_data_list = my_api.get_aeroplanes()
-
-    print(InfoAeroplanesClass.cast_to_object_list(my_data_list))
+# if __name__ == "__main__":
+#
+#     my_api = APIConnectClass("Malta")
+#     # print(my_api.get_coordinates())
+#     # print(my_api.get_aeroplanes())
+#     my_data_list = my_api.get_aeroplanes()
+#
+#     print(InfoAeroplanesClass.cast_to_object_list(my_data_list))

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from requests import get
+import requests
 
 
 class APIAbcClass(ABC):
@@ -32,12 +32,12 @@ class APIConnectClass(APIAbcClass):
         self.__geo_coordinates = None
 
     def connect_to_API(self, url, params, headers):
-        response = get(url=url, params=params, headers=headers)
+        response = requests.get(url=url, params=params, headers=headers)
         if response.status_code == 200:
             data = response.json()
             return data
         else:
-            return "Ошибка соединения с API сервиса"
+            print("Ошибка соединения с API сервиса")
 
 
     def get_coordinates(self):
@@ -78,7 +78,6 @@ class APIConnectClass(APIAbcClass):
         return data["states"]
 
 if __name__ == "__main__":
-
     my_api = APIConnectClass("Malta")
     print(my_api.get_coordinates())
     print(my_api.get_aeroplanes())
